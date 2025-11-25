@@ -1,0 +1,20 @@
+
+<div class="container">
+  <div class="app-title">
+    <h1>Darija ↔ English Translator</h1>
+  </div>
+  <div class="row">
+    <div class="area">
+      <span>{{ sourceLabel }}</span>
+      <textarea [(ngModel)]="sourceText" rows="7" placeholder="Type chosen language here..."></textarea>
+    </div>
+    <div class="switch" (click)="onSwitch()">⟷</div>
+    <div class="area">
+      <span>{{ destLabel }}</span>
+      <textarea [(ngModel)]="destText" rows="7" placeholder="Translation..." readonly></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <button (click)="translateText()">Translate</button>
+  </div>
+</div>
