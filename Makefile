@@ -1,2 +1,5 @@
-all: 
-	@(cd backend && mvn spring-boot:run) & (cd frontend && ng serve)
+back :
+	@(cd backend && mvn spring-boot:run)
+
+front :
+	@(cd frontend && npm i && ng serve)

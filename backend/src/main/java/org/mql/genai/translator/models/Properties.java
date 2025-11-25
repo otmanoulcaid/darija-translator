@@ -1,15 +1,14 @@
 package org.mql.genai.translator.models;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 public class Properties {
 
-    @Value("${HF_TOKEN}")
-    private String hfToken;
+    @Value("${GEMINI_KEY}")
+    private String apiKey;
 
-    public String getHfToken() {
-        return hfToken;
+    public String getToken() {
+        return apiKey;
     }
 }
 

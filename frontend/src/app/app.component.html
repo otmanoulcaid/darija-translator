@@ -6,15 +6,15 @@
   <div class="row">
     <div class="area">
       <span>{{ sourceLabel }}</span>
-      <textarea [(ngModel)]="sourceText" rows="7" placeholder="Type chosen language here..."></textarea>
+      <textarea [(ngModel)]="sourceText" rows="6" placeholder="Type chosen language here..."></textarea>
     </div>
     <div class="switch" (click)="onSwitch()">⟷</div>
     <div class="area">
       <span>{{ destLabel }}</span>
-      <textarea [(ngModel)]="destText" rows="7" placeholder="Translation..." readonly></textarea>
+      <textarea [(ngModel)]="destText" rows="6" placeholder="Translation..." readonly></textarea>
     </div>
   </div>
   <div class="row">
-    <button (click)="translateText()">Translate</button>
+    <button (click)="translateText()" [disabled]="sourceText.trim() === ''">Translate</button>
   </div>
 </div>

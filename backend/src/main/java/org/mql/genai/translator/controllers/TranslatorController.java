@@ -2,28 +2,28 @@ package org.mql.genai.translator.controllers;
 
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
-
-import reactor.core.publisher.Mono;
+import org.mql.genai.translator.service.Translator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1")
+@CrossOrigin("*")
+@RequestMapping("/api/v1/translate")
 public class TranslatorController {
+    @Autowired
+    private Translator translator;
 
-    private final WebClient webClient = 
-    WebClient.create("https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-ar");
-
-    @PostMapping("/translate")
-    public Mono<String> translate(@RequestBody Map<String, String> body) {
+    @PostMapping("/en-to-darija")
+    public Map<String, String> englishToDarija(@RequestBody Map<String, String> body) {
         String text = body.get("text");
-        return webClient.post()
-                .header("Authorization", "Bearer YOUR_HF_TOKEN")
-                .bodyValue(Map.of("inputs", text))
-                .retrieve()
-                .bodyToMono(String.class);
+        String translated = translator.englishToDarija(text);
+        return Map.of("translation", translated);
+    }
+
+    @PostMapping("/darija-to-en")
+    public Map<String, String> darijaToEnglish(@RequestBody Map<String, String> body) {
+        String text = body.get("text");
+        String translated = translator.DarijaToEnglish(text);
+        return Map.of("translation", translated);
     }
 }
