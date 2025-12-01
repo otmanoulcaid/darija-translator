@@ -7,8 +7,15 @@ public class Properties {
     @Value("${GEMINI_KEY}")
     private String apiKey;
 
+    @Value("${gemini.model}")
+    private String URLModel;
+
     public String getToken() {
         return apiKey;
+    }
+
+    public String getModelURL() {
+        return URLModel;
     }
 }
 
