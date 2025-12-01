@@ -6,17 +6,17 @@ import { HttpResponse } from "../models/HttpResponse.model";
     providedIn: 'root'
 })
 export class TranslatorService {
+    private config = (window as any).APP_CONFIG;
     private httpClient = inject(HttpClient);
-    private URL = 'http://localhost:8080/api/v1/translate/';
 
     public englishToDarija(text: string) {
-        return this.httpClient.post<HttpResponse>(`${this.URL}en-to-darija`, {
+        return this.httpClient.post<HttpResponse>(`${this.config.apiUrl}en-to-darija`, {
             text
         })
     }
 
     public darijaToEnglish(text: string) {
-        return this.httpClient.post<HttpResponse>(`${this.URL}darija-to-en`, {
+        return this.httpClient.post<HttpResponse>(`${this.config.apiUrl}darija-to-en`, {
             text
         })
     }
