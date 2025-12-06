@@ -1,9 +1,6 @@
 import { By } from "selenium-webdriver";
 
 export class TranslatorPage {
-  /**
-   * @param {import("selenium-webdriver").WebDriver} driver
-   */
   constructor(driver) {
     this.driver = driver;
 
