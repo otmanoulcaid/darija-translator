@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class Properties {
 
-    @Value("${GEMINI_KEY}")
+    @Value("${gemini.key}")
     private String apiKey;
 
     @Value("${gemini.model}")
